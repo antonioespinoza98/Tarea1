@@ -1,0 +1,86 @@
+---
+Title: 'Tarea Moral I'
+author: 'Marco Espinoza'
+output: pdf_document
+
+bibliography: referencias.bib
+editor_options: 
+  chunk_output_type: console
+---
+
+Información tomada de @a9qy-ph35-19
+
+```{r, warning=FALSE, message=FALSE}
+library(readr)
+Breast_Cancer <- read_csv("Breast_Cancer.csv")
+```
+
+```{r}
+Breast_Cancer$`A Stage` <- factor(Breast_Cancer$`A Stage`)
+levels(Breast_Cancer$`A Stage`) <- c('Distante', 'Regional')
+```
+
+```{r}
+boxplot(Breast_Cancer$`Survival Months` ~ Breast_Cancer$`A Stage` + Breast_Cancer$Race)
+```
+
+```{r}
+library(ggplot2)
+```
+
+# Considerando los meses de sobrevivencia de cáncer como la variable respuesta
+
+```{r}
+ggplot(Breast_Cancer, aes(`Survival Months`, fill = Race)) + geom_density(alpha = 0.5) + scale_fill_discrete(name = 'Raza', labels = c('Afrodescendiente', 'Otro', 'Blanco')) + labs(x = 'Meses de sobrevivencia', y = 'Densidad') + theme_dark()
+```
+
+```{r}
+ggplot(Breast_Cancer, aes(`Survival Months`, fill = Race)) + geom_density(alpha = 0.5) + scale_fill_discrete(name = 'Raza', labels = c('Afrodescendiente', 'Otro', 'Blanco')) + labs(x = 'Meses de sobrevivencia', y = 'Densidad') + theme_dark() + facet_wrap(vars(`A Stage`)) 
+```
+
+```{r}
+ggplot(Breast_Cancer, aes(`Survival Months`, fill = Race, color = Status)) + geom_density(alpha = 0.5) + scale_fill_discrete(name = 'Raza', labels = c('Afrodescendiente', 'Otro', 'Blanco')) + labs(x = 'Meses de sobrevivencia', y = 'Densidad') + theme_dark() + facet_wrap(vars(`A Stage`)) + scale_color_brewer(palette = 'Spectral')
+```
+
+```{r}
+ggplot(Breast_Cancer, aes(`Survival Months`, fill = Race)) + geom_density(position = 'fill') + scale_fill_discrete(name = 'Raza', labels = c('Afrodescendiente', 'Otro', 'Blanco')) + labs(x = 'Meses de sobrevivencia', y = 'Densidad') + theme_dark()
+```
+
+```{r}
+ggplot(Breast_Cancer, aes(`Survival Months`, fill = Race)) + geom_density(position = 'fill') + scale_fill_discrete(name = 'Raza', labels = c('Afrodescendiente', 'Otro', 'Blanco')) + labs(x = 'Meses de sobrevivencia', y = 'Densidad') + theme_dark() + facet_wrap(vars(`A Stage`)) 
+```
+
+```{r}
+ggplot(Breast_Cancer, aes(`Survival Months`, fill = Race, color = Status)) + geom_density(position = 'fill') + scale_fill_discrete(name = 'Raza', labels = c('Afrodescendiente', 'Otro', 'Blanco')) + labs(x = 'Meses de sobrevivencia', y = 'Densidad') + theme_dark() + facet_wrap(vars(`A Stage`)) + scale_color_brewer(palette = 'Spectral')
+```
+
+# Considerando la variable tamaño del tumor como variable respuesta
+
+```{r}
+ggplot(Breast_Cancer, aes(`Tumor Size`, fill = Race)) + geom_density(alpha = 0.5) + scale_fill_discrete(name = 'Raza', labels = c('Afrodescendiente', 'Otro', 'Blanco')) + labs(x = 'Meses de sobrevivencia', y = 'Densidad') + theme_dark()
+```
+
+```{r}
+ggplot(Breast_Cancer, aes(`Tumor Size`, fill = Race)) + geom_density(alpha = 0.5) + scale_fill_discrete(name = 'Raza', labels = c('Afrodescendiente', 'Otro', 'Blanco')) + labs(x = 'Meses de sobrevivencia', y = 'Densidad') + theme_dark() + facet_wrap(vars(`A Stage`)) 
+```
+
+```{r}
+ggplot(Breast_Cancer, aes(`Tumor Size`, fill = Race, color = Status)) + geom_density(alpha = 0.5) + scale_fill_discrete(name = 'Raza', labels = c('Afrodescendiente', 'Otro', 'Blanco')) + labs(x = 'Meses de sobrevivencia', y = 'Densidad') + theme_dark() + facet_wrap(vars(`A Stage`)) + scale_color_brewer(palette = 'Spectral')
+```
+
+```{r}
+ggplot(Breast_Cancer, aes(`Tumor Size`, fill = Race)) + geom_density(position = 'fill') + scale_fill_discrete(name = 'Raza', labels = c('Afrodescendiente', 'Otro', 'Blanco')) + labs(x = 'Meses de sobrevivencia', y = 'Densidad') + theme_dark()
+```
+
+```{r}
+ggplot(Breast_Cancer, aes(`Tumor Size`, fill = Race)) + geom_density(position = 'fill') + scale_fill_discrete(name = 'Raza', labels = c('Afrodescendiente', 'Otro', 'Blanco')) + labs(x = 'Meses de sobrevivencia', y = 'Densidad') + theme_dark() + facet_wrap(vars(`A Stage`)) 
+```
+
+```{r}
+ggplot(Breast_Cancer, aes(`Tumor Size`, fill = Race, color = Status)) + geom_density(position = 'fill') + scale_fill_discrete(name = 'Raza', labels = c('Afrodescendiente', 'Otro', 'Blanco')) + labs(x = 'Meses de sobrevivencia', y = 'Densidad') + theme_dark() + facet_wrap(vars(`A Stage`)) + scale_color_brewer(palette = 'Spectral')
+```
+
+# Referencias
+
+
+
